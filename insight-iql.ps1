@@ -24,7 +24,7 @@ $pageNumber = 1
 
 $insightData = while($pageNumber -le $pageSize ){
 
-    # objectSchemaId, pageNumber, includeAttributes
+    # Change objectSchemaId, pageNumber, includeAttributes , https://documentation.riada.io/display/ICV50/IQL+-+REST
     $query = "/rest/insight/1.0/iql/objects?objectSchemaId=4&page=$pageNumber&resultPerPage=25&includeAttributes=true&iql=$encodedIQL"
 
     $params = @{
@@ -33,7 +33,8 @@ $insightData = while($pageNumber -le $pageSize ){
     }
 
     $response = Invoke-JiraMethod @params
-
+    Write-host "Page $pageNumber returned" -ForegroundColor yellow -BackgroundColor black
+ 
     $pageNumber ++
     $pageSize = $response.pageSize
 
