@@ -1,6 +1,5 @@
-   <#
-
-.DESCRIPTION
+<#
+    .DESCRIPTION
         Returns IQL query from Insight Plugin API. 
 
     .EXAMPLE
@@ -11,7 +10,7 @@
     .NOTES
         This script needs the "BetterCredentials" , "PSJira" modules
         Read More about jira insight apis's https://documentation.riada.io/display/ICV50/IQL+-+REST
-    #>
+#>
     
 # Change to current directory 
 $scriptpath = $MyInvocation.MyCommand.Path
