@@ -1,6 +1,19 @@
 #requires -modules AtlassianPS/JiraPS , Jaykul/BetterCredentials
 #ReadMore https://documentation.riada.io/display/ICV50/IQL+-+REST
+   <#
 
+.DESCRIPTION
+        Returns IQL query from Insight Plugin API. 
+
+    .EXAMPLE
+        Return Objects with Status "In Service" and empty modelName Attribute field
+        -----------
+        IQL = '"Status" IN ("In Service") AND "modelName" IS empty' 
+
+    .NOTES
+        This script needs the "BetterCredentials" , "PSJira" modules
+    #>
+    
 # Change to current directory 
 $scriptpath = $MyInvocation.MyCommand.Path
 $dir = Split-Path $scriptpath
@@ -15,7 +28,7 @@ Initialize-Environment -Server "JIRASERVERNAME" -UserName api_insight
  Write-host "API Access" $(Get-JiraConfigServer) -ForegroundColor yellow -BackgroundColor black
 
 # IQL Query
-$IQL = 'objectType IN objectTypeAndChildren(592) AND "Status" IN ("In Service") AND "MacAddress" IS NOT empty' 
+$IQL = '"Status" IN ("In Service") AND "modelName" IS empty' 
 $encodedIQL = [System.Web.HttpUtility]::UrlEncode($IQL) 
 
 
