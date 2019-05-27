@@ -14,16 +14,17 @@ Initialize-Environment -Server "JIRASERVERNAME" -UserName api_insight
  
  Write-host "API Access" $(Get-JiraConfigServer) -ForegroundColor yellow -BackgroundColor black
 
+# IQL Query
+$IQL = 'objectType IN objectTypeAndChildren(592) AND "Status" IN ("In Service") AND "MacAddress" IS NOT empty' 
+$encodedIQL = [System.Web.HttpUtility]::UrlEncode($IQL) 
+
 
 $pageSize = 1
 $pageNumber = 1
 
-$IQL = 'objectType IN objectTypeAndChildren(592) AND "Status" IN ("In Service") AND "MacAddress" IS NOT empty' 
-$encodedIQL = [System.Web.HttpUtility]::UrlEncode($IQL) 
-
 $insightData = while($pageNumber -le $pageSize ){
 
-
+    # objectSchemaId, pageNumber, includeAttributes
     $query = "/rest/insight/1.0/iql/objects?objectSchemaId=4&page=$pageNumber&resultPerPage=25&includeAttributes=true&iql=$encodedIQL"
 
     $params = @{
