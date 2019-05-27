@@ -1,5 +1,3 @@
-#requires -modules AtlassianPS/JiraPS , Jaykul/BetterCredentials
-#ReadMore https://documentation.riada.io/display/ICV50/IQL+-+REST
    <#
 
 .DESCRIPTION
@@ -12,6 +10,7 @@
 
     .NOTES
         This script needs the "BetterCredentials" , "PSJira" modules
+        Read More about jira insight apis's https://documentation.riada.io/display/ICV50/IQL+-+REST
     #>
     
 # Change to current directory 
