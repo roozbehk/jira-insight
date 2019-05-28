@@ -20,7 +20,7 @@ cd $dir
 # User Script requires a valid session. Use 'New-JiraSession' or edit script.
 if (-not (Get-JiraSession)) {     
 Import-Module $dir\Initialize-Environment.ps1
-Initialize-Environment -Server "JIRASERVERNAME" -UserName api_insight
+Initialize-Environment -Server "JIRASERVERNAME" -UserName JIRAUSERNAME
  }
  
  Write-host "API Access" $(Get-JiraConfigServer) -ForegroundColor yellow -BackgroundColor black
